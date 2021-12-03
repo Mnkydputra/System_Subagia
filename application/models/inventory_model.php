@@ -45,8 +45,8 @@ class Inventory_model extends CI_Model
 	public function cek($shipref, $product_number)
 	{
 		$this->db->select("*");
-		$this->db->from("i_stock");
-		$this->db->where(array("i_stock.shipref" => $shipref, 'i_stock.product_number' => $product_number));
+		$this->db->from("i_product");
+		$this->db->where(array("i_product.shipref" => $shipref, 'i_product.product_name' => $product_number));
 		return $this->db->get();
 	}
 
