@@ -74,10 +74,15 @@ CREATE TABLE `i_delivery_order` (
   `truck` varchar(100) DEFAULT NULL,
   `spesial_instruct` varchar(255) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
+  `supir` varchar(100) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
+  `customer` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `i_delivery_order` */
+
+insert  into `i_delivery_order`(`id`,`awb`,`shipref`,`product_number`,`product_desc`,`po_number`,`quantity`,`pallet`,`total_cbm`,`shipment`,`truck`,`spesial_instruct`,`tanggal`,`supir`,`status`,`customer`) values (15,'605','20','','Bubur Kacang','100','5','2','0.02','Bandung','L300','DASEP','2021-05-27',NULL,NULL,NULL);
 
 /*Table structure for table `i_po_number` */
 
