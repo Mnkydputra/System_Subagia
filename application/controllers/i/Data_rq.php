@@ -48,7 +48,7 @@ class Data_rq extends CI_Controller
 		$tgl  			 = $this->input->post("tanggal");
 
 		$data  = array(
-			"id"								=> $id,
+			// "id"								=> $id,
 			"awb"								=> $awb,
 			"shipref"							=> $sp,
 			"product_number"					=> $pn,
@@ -70,18 +70,17 @@ class Data_rq extends CI_Controller
 		$info  = "Input Delivery Order " . $pn . " - " . $sp;
 		$input = $this->inventory_model->inputData($data, "i_data_requirment");
 		// $cekProduct = $this->inventory_model->cari(array('product_number' => $pn), "sc_control")->row();
-		// $input = $this->inventory_model->update($dataupdate, "i_product", array("shipref" => $sp));
-		// $whre  = array('shipref' => $sp);
-		// $Cek = $this->inventory_model->cek($sp, $pn)->row();
-		// if ($Cek->quantity == 0) {
-			// 	$this->inventory_model->delData($whre, "i_product");
-		// }
-		// if ($input == true) {
-		// 	echo "sukses";
-		// } else {
-			// 	echo "gagal";
-		// }
-			$Cek = $this->inventory_model->cek($sp, $pn)->row();
-			
+		$input = $this->inventory_model->update($dataupdate, "i_product", array("shipref" => $sp));
+		$whre  = array('shipref' => $sp);
+		$Cek = $this->inventory_model->cek($sp, $pn)->row();
+		if ($Cek->quantity == 0) {
+			$this->inventory_model->delData($whre, "i_product");
 		}
+		if ($input == true) {
+			echo "sukses";
+		} else {
+			echo "gagal";
+		}
+		//$Cek = $this->inventory_model->cek($sp, $pn)->row();
+	}
 }

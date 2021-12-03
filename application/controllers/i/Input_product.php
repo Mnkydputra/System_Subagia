@@ -61,7 +61,7 @@ class Input_product extends CI_Controller
             $this->session->set_flashdata('sukses', 'Anda Berhasil Masuk');
             $this->inventory_model->inputData($vendor, "i_vendor");
         } else {
-            $this->session->set_flashdata('gagal', 'GAGAL');
+            $this->session->set_flashdata('gagal', 'Lanjutkan');
             redirect('i/Input_product/po_number/' . $sales_id);
         }
     }
@@ -104,9 +104,9 @@ class Input_product extends CI_Controller
     function Product($po_number)
     {
         $data = array(
-            'akun'          => $this->db->get_where('akun', array('email' => $this->session->userdata('email')))->row(),
-            'url'           => $this->uri->segment(2),
-            'po'             => $this->db->get_where('i_po_number', array('po_number' => $po_number))->row()
+            'akun'             => $this->db->get_where('akun', array('email' => $this->session->userdata('email')))->row(),
+            'url'              => $this->uri->segment(2),
+            'po'               => $this->db->get_where('i_po_number', array('po_number' => $po_number))->row()
         );
 
         // echo '<pre>';
