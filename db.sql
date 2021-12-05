@@ -50,11 +50,11 @@ CREATE TABLE `i_data_requirment` (
   `cbm` varchar(255) DEFAULT NULL,
   `date_out` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `i_data_requirment` */
 
-insert  into `i_data_requirment`(`id`,`awb`,`shipref`,`product_number`,`product_desc`,`quantity`,`pallet`,`long`,`weight`,`hight`,`cbm`,`date_out`) values (15,'605','20','21','Bubur Kacang','5','2','20','20','20','0.02','2021-10-06');
+insert  into `i_data_requirment`(`id`,`awb`,`shipref`,`product_number`,`product_desc`,`quantity`,`pallet`,`long`,`weight`,`hight`,`cbm`,`date_out`) values (25,'1','1','1','baju','2','23','23','22','20','0.23','2016-05-27'),(26,'1','2','1','Celana','1','1','11','111','11','0.01','2015-06-12');
 
 /*Table structure for table `i_delivery_order` */
 
@@ -78,11 +78,33 @@ CREATE TABLE `i_delivery_order` (
   `status` varchar(200) DEFAULT NULL,
   `customer` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `i_delivery_order` */
 
-insert  into `i_delivery_order`(`id`,`awb`,`shipref`,`product_number`,`product_desc`,`po_number`,`quantity`,`pallet`,`total_cbm`,`shipment`,`truck`,`spesial_instruct`,`tanggal`,`supir`,`status`,`customer`) values (15,'605','20','','Bubur Kacang','100','5','2','0.02','Bandung','L300','DASEP','2021-05-27',NULL,NULL,NULL);
+insert  into `i_delivery_order`(`id`,`awb`,`shipref`,`product_number`,`product_desc`,`po_number`,`quantity`,`pallet`,`total_cbm`,`shipment`,`truck`,`spesial_instruct`,`tanggal`,`supir`,`status`,`customer`) values (25,'1','1','1','baju','4P2FCB3G4KOM','2','23','0.23',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(26,'1','2','1','Celana','4P2FCB3G4KOM','1','1','0.01',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+/*Table structure for table `i_order_rq` */
+
+DROP TABLE IF EXISTS `i_order_rq`;
+
+CREATE TABLE `i_order_rq` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `no_order` varchar(200) DEFAULT NULL,
+  `supir` varchar(200) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
+  `customer` varchar(100) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `awb` varchar(100) DEFAULT NULL,
+  `truck` varchar(100) DEFAULT NULL,
+  `shipment` varchar(100) DEFAULT NULL,
+  `spesial_instruct` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `i_order_rq` */
+
+insert  into `i_order_rq`(`id`,`no_order`,`supir`,`status`,`customer`,`tanggal`,`awb`,`truck`,`shipment`,`spesial_instruct`) values (5,'4P2FCB3G4KOM',NULL,NULL,NULL,'2021-05-27','1','L300','Bandung',' hati hati gengs');
 
 /*Table structure for table `i_po_number` */
 
@@ -95,11 +117,11 @@ CREATE TABLE `i_po_number` (
   `id_sales_partner` varchar(255) DEFAULT NULL,
   `no_awb` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `i_po_number` */
 
-insert  into `i_po_number`(`id`,`id_po`,`po_number`,`id_sales_partner`,`no_awb`) values (9,NULL,'60','01','50');
+insert  into `i_po_number`(`id`,`id_po`,`po_number`,`id_sales_partner`,`no_awb`) values (11,NULL,'1','01','1');
 
 /*Table structure for table `i_product` */
 
@@ -120,11 +142,11 @@ CREATE TABLE `i_product` (
   `type` varchar(255) DEFAULT NULL,
   `quantity` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `i_product` */
 
-insert  into `i_product`(`id`,`id_po`,`po_number`,`id_sales_partner`,`awb`,`shipref`,`id_product`,`product_name`,`description`,`container`,`storage_loc`,`type`,`quantity`) values (12,'','60','01','50','20','20-21','21','Bubur Kacang','container','LINE AB-AC','REDE','15');
+insert  into `i_product`(`id`,`id_po`,`po_number`,`id_sales_partner`,`awb`,`shipref`,`id_product`,`product_name`,`description`,`container`,`storage_loc`,`type`,`quantity`) values (15,'','1','01','1','1','1-1','1','baju','Container','LINE AB-AC','Kain','17'),(16,'','1','01','1','2','2-1','1','Celana','Container','LINE AB-AD','beling','7');
 
 /*Table structure for table `i_stock` */
 
@@ -178,11 +200,11 @@ CREATE TABLE `i_volume_product` (
   `total_cbm` varchar(255) DEFAULT NULL,
   `tanggal` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `i_volume_product` */
 
-insert  into `i_volume_product`(`id`,`id_volume_product`,`id_product`,`l`,`w`,`h`,`pallet`,`cbm`,`total_cbm`,`tanggal`) values (1,'','12-122','23','23','23','232','0.01','2.32','2021-03-12'),(2,'','23-32323','23','232','2323','23','12.3','285.','2016-05-27'),(3,'','RES-RESS','12','12','121','12','0.01','0.24','2019-11-12'),(4,'','05-05656','10','60','50','15','0.03','0.44','2016-05-27'),(5,'','45-45','23','23','2323','232','1.22','285.','2021-06-19'),(6,'','4RESS-','45','34','4','43','0.00','0.43','2021-06-19'),(7,'','23-232','23','23','121','232','','','2016-05-27'),(8,'','20-21','20','20','20','3','0.00','0.03','2021-06-07');
+insert  into `i_volume_product`(`id`,`id_volume_product`,`id_product`,`l`,`w`,`h`,`pallet`,`cbm`,`total_cbm`,`tanggal`) values (1,'','12-122','23','23','23','232','0.01','2.32','2021-03-12'),(2,'','23-32323','23','232','2323','23','12.3','285.','2016-05-27'),(3,'','RES-RESS','12','12','121','12','0.01','0.24','2019-11-12'),(4,'','05-05656','10','60','50','15','0.03','0.44','2016-05-27'),(5,'','45-45','23','23','2323','232','1.22','285.','2021-06-19'),(6,'','4RESS-','45','34','4','43','0.00','0.43','2021-06-19'),(7,'','23-232','23','23','121','232','','','2016-05-27'),(8,'','20-21','20','20','20','3','0.00','0.03','2021-06-07'),(9,'','1-1','57','10','30','5','0.01','0.1','2016-05-27'),(10,'','2-2','20','20','40','50','0.01','1','2016-06-11'),(11,'','1-1','23','20','121','3','0.05','0.18','2015-06-12'),(12,'','2-1','23','20','2323','1','1.06','1.07','2016-06-11');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
